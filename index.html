@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wave Propagation Sandbox</title>
+  <link rel="stylesheet" href="style.css">
+    <body>
+    <header>
+        <h1>Wave Propagation Sandbox · click‑drag to emit a pulse · swirling collisions · procedural obstacles</h1>
+    </header>
+    <div class="wrap">
+        <aside class="panel">
+        <div class="group">
+            <h3>Shallow‑Water Physics</h3>
+            <label>Grid Size <input id="grid" type="range" min="96" max="512" step="16" value="256"> <span id="gridVal">256</span></label>
+            <label>Gravity (g) <input id="grav" type="range" min="0.2" max="3.0" step="0.05" value="1.3"> <span id="gravVal">1.30</span></label>
+            <label>Linear Drag <input id="drag" type="range" min="0" max="0.2" step="0.005" value="0.02"> <span id="dragVal">0.020</span></label>
+            <label>Vorticity (swirl) <input id="vort" type="range" min="0" max="8" step="0.1" value="0.2"> <span id="vortVal">0.2</span></label>
+        </div>
+
+        <div class="group">
+    <h3>Pulse Controls</h3>
+    <label>Pulse Strength <input id="pulseAmp" type="range" min="0.2" max="4" step="0.1" value="1.4"> <span id="pulseAmpVal">1.4</span></label>
+    <label>Pulse Radius <input id="pulseRad" type="range" min="2" max="256" step="1" value="12"> <span id="pulseRadVal">12</span></label>
+    <label>Pulse Life <input id="pulseLife" type="range" min="0.1" max="10.0" step="0.05" value="2.5"> <span id="pulseLifeVal">2.5</span></label>
+    <label>Vortex Boost <input id="vortexBoost" type="range" min="0" max="4" step="0.1" value="1.0"> <span id="vortexBoostVal">1.0</span></label>
+        </div>
+
+        <div class="group">
+            <h3>Procedural Obstacles</h3>
+            <div class="row">
+            <label>Circles <input id="nCircles" type="range" min="0" max="20" step="1" value="1"> <span id="nCirclesVal">1</span></label>
+            <label>Boxes <input id="nBoxes" type="range" min="0" max="20" step="1" value="1"> <span id="nBoxesVal">1</span></label>
+            </div>
+            <div class="row">
+            <label>Slits <input id="nSlits" type="range" min="0" max="12" step="1" value="1"> <span id="nSlitsVal">1</span></label>
+            <label>Size <input id="size" type="range" min="4" max="40" step="1" value="16"> <span id="sizeVal">16</span></label>
+            </div>
+            <div class="row">
+            <button id="gen" class="btn">Generate Shapes</button>
+            <button id="clear" class="btn warn">Clear</button>
+            </div>
+        </div>
+
+        <div class="group">
+            <h3>Controls</h3>
+            <div class="row">
+            <button id="pauseBtn" class="btn">Pause</button>
+            <button id="resetBtn" class="btn">Reset</button>
+            <label><input id="showGrid" type="checkbox" unchecked> Show grid</label>
+            <label><input id="debugColors" type="checkbox"> Debug Colors</label>
+            </div>
+        </div>
+        </aside>
+
+        <main class="panel" style="padding:8px"><canvas id="canvas"></canvas></main>
+    </div>
+
+    <footer>Tips: <span class="kbd">Click‑drag</span> to emit a pulse · Generate Obstacles for diffraction/reflection</footer>
+    <script src="main.js"></script>
+    </body>
+</html>
