@@ -1,3 +1,5 @@
+// ui.js
+// UI logic for GPU shallow-water simulation
 const canvas = document.getElementById('canvas');
 const wave = new window.WaveGL(canvas, { gridSize: 1080 });
 
@@ -61,7 +63,7 @@ controls.forEach(id => {
   if (el && val) {
     el.addEventListener('input', () => {
       val.textContent = el.value;
-
+      // TODO: Update simulation parameters
     });
   }
 });
@@ -158,12 +160,7 @@ lifetimeSlider.addEventListener('input', () => {
 });
 lifetimeVal.textContent = parseFloat(lifetimeSlider.value).toFixed(2) + 's';
 function animate() {
-  if (!paused) wave.step({
-    damping: simParams.damping,
-    gravity: simParams.gravity,
-    drag: simParams.drag,
-    vorticity: simParams.vorticity
-  });
+  if (!paused) wave.step({ damping: simParams.damping });
   const now = performance.now();
   // After drag release, emit impulse for simParams.lifetime seconds
   if (dragReleaseUntil > 0 && lastDragPos) {

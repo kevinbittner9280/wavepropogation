@@ -1,3 +1,6 @@
+// wavegl.js
+// GPU-accelerated shallow-water simulation engine
+
 const EXTENSIONS = [
   'EXT_color_buffer_float',
   'OES_texture_float_linear',
@@ -78,7 +81,7 @@ WaveGL.prototype._initShaders = function() {
       gl_Position = vec4(aPos, 0, 1);
     }
   `;
-  // Fragment shader
+  // Fragment shader: pastel direction-based coloring + obstacle visualization
   const fragSrc = `#version 300 es\n
     precision highp float;
     in vec2 vUV;
@@ -191,6 +194,7 @@ WaveGL.prototype._resize = function() {
 };
 
 WaveGL.prototype.step = function(params) {
+  // Minimal CPU-based wave propagation with damping, gravity, drag, and vorticity
   const size = this.gridSize;
   const h = this.heightField;
   const hPrev = this.prevField;
